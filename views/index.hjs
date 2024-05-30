@@ -3,9 +3,37 @@
   <head>
     <title>{{ title }}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="/javascripts/main.js"></script>
   </head>
   <body>
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
+    <form onsubmit="return myFunction(event)">
+      <input type="text" id="stock" value="AAPL" />
+      <button type="submit">
+        Search
+      </button>
+    </form>
+    <table id="table" class="hidden">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Min</th>
+          <th>Max</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+      </tbody>
+    </table>
+
+     <template id="table-row">
+      <tr></tr>
+    </template>
+    <template id="table-cell">
+      <td></td>
+    </template>
+
+    <h1>{{ title }}</h1>  
+    <p>Welcome to {{ title }}</p> 
+    
   </body>
 </html>
