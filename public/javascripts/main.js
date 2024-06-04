@@ -7,7 +7,9 @@ function myFunction(e) {
   }
   
   function getStocks(input) {
-    axios
+    populateTable([]);
+    
+    /*axios
       .get(`/api/prices/${input}`, {
         json: true,
       })
@@ -17,7 +19,7 @@ function myFunction(e) {
       })
       .catch((error) => {
         console.error(error);
-      });
+      });*/
 
 
     //setTimeout(arguments.callee, 5000);
@@ -47,7 +49,7 @@ function myFunction(e) {
   
       tableBody.appendChild(a);
     });
-    document.getElementById("table").classList.remove("hidden");
+    document.getElementById("table").classList.remove("d-none");
   }
   
   function generateRandomArray(amount) {
