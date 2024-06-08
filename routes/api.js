@@ -78,8 +78,8 @@ router.get("/prices/:stock", function (req, res, next) {
   const newstock = req.params.stock;
   const baseUrl = process.env.API_URL;
   const apiKey = process.env.API_KEY;
-  const startDate = "2024-01-01";
-  const endDate = "2024-05-01";
+  const startDate = "2024-05-31";
+  const endDate = "2024-06-07";
   const multiplier = "1";
   const timespan = "day";
 

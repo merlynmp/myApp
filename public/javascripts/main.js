@@ -1,41 +1,58 @@
 function myFunction(e) {
     e.preventDefault();
     const input = document.getElementById("stock").value;
+    // const input2 = document.getElementById("Info").value;
     getStocks(input);
   
     return false;
   }
   
   function getStocks(input) {
-    /*populateTable([]);*/
-    
+    /*populateTable([]);/${m}/${t}/${s}/${e}*/
     axios
       .get(`/api/prices/${input}`, {
         json: true,
       })
       .then((response) => {
         populateTable(response.data);
+        populateChart(response.data, input2);
         console.log(response.data);
-        const highValues = [];
-        const lowValues = [];
-
-        response.data.results.forEach( result => {
-          highValues.push(result.h);
-          lowValues.push(result.l);
-        });
-
-        console.log(highValues);
-        console.log(lowValues)
-
-        
+ 
       })
       .catch((error) => {
         console.error(error);
       });
 
+      
 
-    //setTimeout(arguments.callee, 5000);
   }
+
+  function populateChart(data, input2) {
+    array_one = [];
+    data.results.forEach(result => {
+      array_one.push(result.input2);
+    });
+
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['1', '2', '3', '4', '5'],
+        datasets: [{
+          label: '# of Votes',
+          data: array_one,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+   }
   
   function populateTable(data) {
     const tableBody = document.getElementById("table-body");
@@ -55,11 +72,35 @@ function myFunction(e) {
       a.appendChild(myCell);
 
       myCell = document.importNode(cell, true);
-      myCell.innerHTML = result.l;
+      myCell.innerHTML = result.o;
+      a.appendChild(myCell);
+
+      myCell = document.importNode(cell, true);
+      myCell.innerHTML = result.c;
       a.appendChild(myCell);
 
       myCell = document.importNode(cell, true);
       myCell.innerHTML = result.h;
+      a.appendChild(myCell);
+
+      myCell = document.importNode(cell, true);
+      myCell.innerHTML = result.l;
+      a.appendChild(myCell);
+
+      myCell = document.importNode(cell, true);
+      myCell.innerHTML = result.v;
+      a.appendChild(myCell);
+
+      myCell = document.importNode(cell, true);
+      myCell.innerHTML = result.vw;
+      a.appendChild(myCell);
+
+      myCell = document.importNode(cell, true);
+      myCell.innerHTML = result.t;
+      a.appendChild(myCell);
+
+      myCell = document.importNode(cell, true);
+      myCell.innerHTML = result.n;
       a.appendChild(myCell);
   
       tableBody.appendChild(a);
