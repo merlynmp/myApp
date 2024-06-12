@@ -41,3 +41,11 @@ Create an .env file ny typing `npm i dotenv` in the terminal. Through this file,
 Create a js file. Type the following:
 `const dotenv = require("dotenv");`
 `dontenv.config();`
+
+In command line, type in the following: `npx express-generator --view=hjs *name of folder*` Enter y when needed. This would create a few files in the folder that can be utilized to create the web application.
+
+In your user.js file, here you would be able to access the stock data by implementing axios. In the command prompt, do `npm i axios`. Then type the following: `const axios = require("axios");` `axios.config();` Next, you can access the [axios documentation](https://axios-http.com/docs/intro) to figure out the next steps
+
+The frontend can be created in index.hjs with html and css/bootstrap. Under public > javascripts > main.js is where you can implement the data into the tables and charts.
+
+Chart.js can be used to create charts.
