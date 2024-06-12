@@ -2,20 +2,21 @@ function myFunction(e) {
     e.preventDefault();
     const input = document.getElementById("stock").value;
     // const input2 = document.getElementById("Info").value;
-    getStocks(input);
+    const words = input.split(" ")
+    getStocks(words);
   
     return false;
   }
   
-  function getStocks(input) {
+  function getStocks(words) {
     /*populateTable([]);/${m}/${t}/${s}/${e}*/
     axios
-      .get(`/api/prices/${input}`, {
+      .get(`/api/prices/${words[0]}/${words[1]}/${words[2]}/${words[3]}/${words[4]}`, {
         json: true,
       })
       .then((response) => {
         populateTable(response.data);
-        populateChart(response.data, input2);
+        populateChart(response.data, words);
         console.log(response.data);
  
       })
@@ -27,27 +28,43 @@ function myFunction(e) {
 
   }
 
-  function populateChart(data, input2) {
-    array_one = [];
+  function populateChart(data, words) {
+    const letter = words[5];
+    let array_one = [];
+    let array_count=[];
+    let i = 0;
     data.results.forEach(result => {
-      array_one.push(result.input2);
+      array_one.push(result[letter]);
+      i++;
+      array_count.push(i);
     });
 
     const ctx = document.getElementById('myChart');
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['1', '2', '3', '4', '5'],
+        labels: array_count,
         datasets: [{
-          label: '# of Votes',
+          label: words[5],
           data: array_one,
-          borderWidth: 1
+          borderColor: '#000000',
+          backgroundColor: '#097969',
+          pointHoverBackgroundColor: '#DE3163',
+          borderWidth: 1   
         }]
       },
       options: {
         scales: {
           y: {
-            beginAtZero: true
+            beginAtZero: true,
+            backdropColor: '#A9A9A9'
+          },
+          x: {
+            title: {
+              color: 'green',
+              display: true,
+              text: 'Day'
+            }
           }
         }
       }

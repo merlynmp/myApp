@@ -38,6 +38,7 @@
           </ul>
         </li> -->
 
+
       <form onsubmit="return myFunction(event)" class = "d-flex justify-content-around" style= "margin-left: 10rem;">
       <input type="text" id="stock" class="form-control me-2" aria-label = "API"/>
       <button class="btn btn-outline-success fw-bold" type="submit" value="Submit">
@@ -50,7 +51,137 @@
 </nav>
 
 
-   
+
+
+<div class="row container-fluid g-0" style="margin-left: 6rem;">
+<div class = "col g-0">
+<p>
+  <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#open" aria-expanded="false" aria-controls="open">
+    o
+  </button>
+</p>
+<div style="min-height: 120px;">
+  <div class="collapse collapse-horizontal" id="open">
+    <div class="card card-body" style="width: 300px;">
+      The open price for the symbol in the given time period.
+    </div>
+  </div>
+</div>
+</div>
+
+<div class = "col">
+<p>
+  <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#close" aria-expanded="false" aria-controls="close">
+    c
+  </button>
+</p>
+<div style="min-height: 120px;">
+  <div class="collapse collapse-horizontal" id="close">
+    <div class="card card-body" style="width: 300px;">
+      The close price for the symbol in the given time period.
+    </div>
+  </div>
+</div>
+</div>
+
+<div class = "col">
+<p>
+  <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#high" aria-expanded="false" aria-controls="high">
+    h
+  </button>
+</p>
+<div style="min-height: 120px;">
+  <div class="collapse collapse-horizontal" id="high">
+    <div class="card card-body" style="width: 300px;">
+      The highest price for the symbol in the given time period.
+    </div>
+  </div>
+</div>
+</div>
+
+<div class = "col">
+<p>
+  <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#low" aria-expanded="false" aria-controls="low">
+    l
+  </button>
+</p>
+<div style="min-height: 120px;">
+  <div class="collapse collapse-horizontal" id="low">
+    <div class="card card-body" style="width: 300px;">
+      The lowest price for the symbol in the given time period.
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="row container-fluid g-0" style="margin-left: 6rem;">
+<div class = "col g-0">
+<p>
+  <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#number" aria-expanded="false" aria-controls="number">
+    n
+  </button>
+</p>
+<div style="min-height: 120px;">
+  <div class="collapse collapse-horizontal" id="number">
+    <div class="card card-body" style="width: 300px;">
+      The number of transactions in the aggregate window.
+    </div>
+  </div>
+</div>
+</div>
+
+<div class = "col">
+<p>
+  <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#timestamp" aria-expanded="false" aria-controls="timestamp">
+    t
+  </button>
+</p>
+<div style="min-height: 120px;">
+  <div class="collapse collapse-horizontal" id="timestamp">
+    <div class="card card-body" style="width: 300px;">
+      The Unix Msec timestamp for the start of the aggregate window.
+    </div>
+  </div>
+</div>
+</div>
+
+<div class = "col">
+<p>
+  <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#volume" aria-expanded="false" aria-controls="volume">
+    v
+  </button>
+</p>
+<div style="min-height: 120px;">
+  <div class="collapse collapse-horizontal" id="volume">
+    <div class="card card-body" style="width: 300px;">
+      The trading volume of the symbol in the given time period.
+    </div>
+  </div>
+</div>
+</div>
+
+<div class = "col">
+<p>
+  <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#volumeweight" aria-expanded="false" aria-controls="volumeweight">
+    vw
+  </button>
+</p>
+<div style="min-height: 120px;">
+  <div class="collapse collapse-horizontal" id="volumeweight">
+    <div class="card card-body" style="width: 300px;">
+      The volume weighted average price.
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+</div>   
+
+
     <div class="container my-3">
 
     <!--<form onsubmit="return myFunction(event)">

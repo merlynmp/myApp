@@ -7,36 +7,39 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.get("/prices/:stock/:multiply/:time/:from/:to", function(req, res) {
+router.get("/prices/:stock/:multiply/:time/:from/:to", function(req, res, next) {
+  const newstock = req.params.stock;
+  const baseUrl = process.env.API_URL;
+  const apiKey = process.env.API_KEY;
+  const startDate = req.params.from;
+  const endDate = req.params.to;
+  const multiplier = req.params.multiply;
+  const timespan = req.params.time;
 
-  res.json({ 
+  const url = `${baseUrl}/${newstock}/range/${multiplier}/${timespan}/${startDate}/${endDate}?apiKey=${apiKey}`;
+  console.log(url);
 
-    stocksTicker: req.params.stock,
-    multiplier: req.params.multiply,
-    timespan: req.params.time,
-    from: req.params.from,
-    to: req.params.to
-  });
-
-  const url2 = `${process.env.API_URL}/${stocksTicker}/range/${multiplier}/${timespane}/${from}/${to}?apiKey=${API_KEY}`;
-  console.log(url2);
   axios
-  	    .get(url2, {
-    		json: true,
-    		headers: { "User-Agent": "request" },
-    		params: {
-      		//	function: "TIME_SERIES_INTRADAY",
-      		//	symbol: stocksTicker,
-      		//	interval: "5min",
-      		//	apikey: process.env.API_KEY,
-    		},
-  	})
-  	.then((response) => {
-    		console.log(response.data);
-  	})
-  	.catch((error) => {
-    		console.log("This is an error");
-  	});
+  .get(url, {
+      headers: {
+        "User-Agent": "request",
+      },
+      params: {
+       
+      },
+    })
+    .then((response) => {
+      if ("Error Message" in response.data) {
+        next(response.data);
+      } else {
+        res.json(response.data);
+        console.log(response.data);
+      }
+    })
+    .catch((error) => {
+      next(error);
+    });
+ 
 });
 
 /*router.get("/prices/:stock", function (req, res, next) {
@@ -92,11 +95,11 @@ router.get("/prices/:stock", function (req, res, next) {
         "User-Agent": "request",
       },
       params: {
-        //apiKey: apiKey,
+        /*apiKey: apiKey,
         startDate : "2024-01-01",
         endDate : "2024-05-01",
         multiplier : "1",
-        timespan : "day",
+        timespan : "day",*/
       },
     })
     .then((response) => {
