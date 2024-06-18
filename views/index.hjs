@@ -188,7 +188,7 @@
     </table>
 </div>
 
-    <!-- need this to display the api data to the web -->
+    <!-- need this to display the api data to the web -->   
      <template id="table-row">
       <tr></tr>
     </template>
